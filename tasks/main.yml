@@ -2,18 +2,15 @@
   apt_key:
     keyserver: hkp://keyserver.ubuntu.com:80
     id: 9DA31620334BD75D9DCB49F368818C72E52529D4
-
 - name: install mongodb 4.0 from official repo
   apt_repository:
     repo: "deb https://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/4.0 multiverse"
     state: "present"
     update_cache: "yes"
-
 - name: install mongodb
   apt:
     name: "mongodb-org"
     state: "present"
-
 - name: create mongodb data dir
   file:
     path: "{{ mongodb_db_path }}"
@@ -21,17 +18,14 @@
     mode: 0755
     owner: mongodb
     group: mongodb
-
 - name: create mongodb service file for systemd
   copy:
     src: "mongodb.service"
     dest: "/etc/systemd/system/mongodb.service"
-
 - name: enable mongodb systemd service
   service:
     name: "mongodb"
     enabled: "yes"
-
 - name: write mongod.conf file
   template:
     src: "mongod.conf"
@@ -39,4 +33,3 @@
     backup: "yes"
   notify:
     - restart mongodb
-

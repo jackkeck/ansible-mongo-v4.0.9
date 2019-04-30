@@ -1,0 +1,10 @@
+dependencies: []
+galaxy_info:
+  author: Jack Keck
+  description: Provision a MongoDB instance on Ubuntu 16.04
+  license: "license (MIT)"
+  min_ansible_version: 2.7.10
+  platforms:
+  - name: Ubuntu
+    versions:
+    - xenial

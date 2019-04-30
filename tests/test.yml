@@ -2,4 +2,4 @@
   connection: local
   become: true
   roles:
-    - {role: ansible-mongo-v4.0.9}
+    - {role: ../roles/mongo-v4.0.9}

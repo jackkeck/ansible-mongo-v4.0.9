@@ -28,7 +28,7 @@
     enabled: "yes"
 - name: write mongod.conf file
   template:
-    src: "mongod.conf"
+    src: "mongod.conf.js"
     dest: "/etc/mongod.conf"
     backup: "yes"
   notify:

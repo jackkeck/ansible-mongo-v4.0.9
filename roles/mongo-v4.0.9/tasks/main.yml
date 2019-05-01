@@ -28,8 +28,9 @@
     enabled: "yes"
 - name: write mongod.conf file
   template:
-    src: "/roles/mongo-v4.0.9/templates/mongod.conf.js2"
+    src: "mongod.conf.js2"
     dest: "/etc/mongod.conf"
     backup: "yes"
+    remote_src: "yes"
   notify:
     - restart mongodb

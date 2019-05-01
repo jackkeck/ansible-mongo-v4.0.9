@@ -38,13 +38,16 @@ script:
   # basic playbook command to ensure this runs
   - ansible-playbook -i tests/inventory tests/test.yml --connection=local --become
 
-  # Run the role/playbook again, checking to make sure it's idempotent/repeatable.
+  # idempotent check.
+  #   - reruns playbook a second time
+  #   - pipes output into grep to check if changed/failed is zero
+  #   - if zero, then pass . else fail and break build.
   # emoji praise hands to Jeff Geerling ( @geerlingguy )
   # https://www.jeffgeerling.com/blog/testing-ansible-roles-travis-ci-github
   - >
   ansible-playbook -i tests/inventory tests/test.yml --connection=local --become |
   grep -q 'changed=0.*failed=0' &&
-  (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
+  (echo 'Idempotence test":" pass' && exit 0) || (echo 'Idempotence test":" fail' && exit 1)
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/?branch=master

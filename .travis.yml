@@ -5,14 +5,14 @@ language: python
 python: "2.7"
 
 env:
-  - ANSIBLE_VERSION=latest
+  # - ANSIBLE_VERSION=latest
   - ANSIBLE_VERSION=2.7.10
-  - ANSIBLE_VERSION=2.7.9
-  - ANSIBLE_VERSION=2.7.8
-  - ANSIBLE_VERSION=2.7.7
-  - ANSIBLE_VERSION=2.7.6
-  - ANSIBLE_VERSION=2.7.5
-  - ANSIBLE_VERSION=2.7.4
+  # - ANSIBLE_VERSION=2.7.9
+  # - ANSIBLE_VERSION=2.7.8
+  # - ANSIBLE_VERSION=2.7.7
+  # - ANSIBLE_VERSION=2.7.6
+  # - ANSIBLE_VERSION=2.7.5
+  # - ANSIBLE_VERSION=2.7.4
 
 branches:
   only:
@@ -29,3 +29,12 @@ install:
 script:
   # lint check.
   - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
+
+  # basic playbook command to ensure this runs
+  - ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo
+
+  # # Run the role/playbook again, checking to make sure it's idempotent.
+  # - ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo
+  # | grep -q 'changed=0.*failed=0'
+  # && (echo 'Idempotence test: pass' && exit 0)
+  # || (echo 'Idempotence test: fail' && exit 1)

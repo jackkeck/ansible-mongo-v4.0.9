@@ -31,6 +31,5 @@
     src: "mongod.conf.j2"
     dest: "/etc/mongod.conf"
     backup: "yes"
-    remote_src: "yes"
   notify:
     - restart mongodb

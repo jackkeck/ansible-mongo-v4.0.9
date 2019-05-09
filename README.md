@@ -6,4 +6,4 @@ Link to packer repository that uses this role to build Docker container running 
 Include testing of Python 2.7 and Python 3
 
 
-[![Build Status](https://travis-ci.com/jackkeck/ansible-mongo-v4.0.9.svg?branch=master)](https://travis-ci.com/jackkeck/ansible-mongo-v4.0.9)
+[![Build Status](https://travis-ci.com/jackkeck/ansible_mongo_v4_0_9.svg?branch=master)](https://travis-ci.com/jackkeck/ansible_mongo_v4_0_9.svg?branch=master) 
